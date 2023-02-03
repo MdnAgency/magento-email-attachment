@@ -4,7 +4,8 @@
   "description": "Add invoice / shipment / creditmemo and custom attachments files to magento sales emails",
   "type": "magento2-module",
   "require": {
-    "magento/framework": "*"
+    "php": ">=7.4",
+    "magento/framework": ">=103.0.0"
   },
   "license": [
     "Open Software License (OSL)"
