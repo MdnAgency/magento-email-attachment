@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="sales_email" >
+            <group id="invoice">
+                <field id="mdn_attach_pdf" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Attach PDF Invoice</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="shipment">
+                <field id="mdn_attach_pdf" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Attach PDF Shipment</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="creditmemo">
+                <field id="mdn_attach_pdf" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Attach PDF Credit Memo</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="mdn_attachment" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="200">
+                <label>Email Attachments</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="static_attachments" translate="label" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Attachments</label>
+                    <comment>Add custom file attachment to e-mail notification</comment>
+                    <frontend_model>Maisondunet\EmailAttachment\Block\System\Config\Form\Field\MailAttachments</frontend_model>
+                    <backend_model>Maisondunet\EmailAttachment\Model\Config\Backend\MailAttachments</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

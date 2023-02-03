@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Magento\Sales\Model\Order\Email\SenderBuilder"
+                type="Maisondunet\EmailAttachment\Model\Email\SenderBuilder"/>
+
+    <type name="Maisondunet\EmailAttachment\Model\AttachmentResolverPool">
+        <arguments>
+            <argument name="attachmentResolvers" xsi:type="array">
+                <item name="system_configuration" xsi:type="object">Maisondunet\EmailAttachment\Model\AttachmentResolver\SystemConfiguration</item>
+                <item name="invoice" xsi:type="object">Maisondunet\EmailAttachment\Model\AttachmentResolver\Invoice</item>
+                <item name="shipment" xsi:type="object">Maisondunet\EmailAttachment\Model\AttachmentResolver\Shipment</item>
+                <item name="creditmemo" xsi:type="object">Maisondunet\EmailAttachment\Model\AttachmentResolver\CreditMemo</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Maisondunet\EmailAttachment\Model\AttachmentResolver\Invoice">
+        <arguments>
+            <argument name="templates" xsi:type="array">
+                <item name="0" xsi:type="string">sales_email_invoice_template</item>
+                <item name="1" xsi:type="string">sales_email_invoice_guest_template</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Maisondunet\EmailAttachment\Model\AttachmentResolver\CreditMemo">
+        <arguments>
+            <argument name="templates" xsi:type="array">
+                <item name="0" xsi:type="string">sales_email_creditmemo_template</item>
+                <item name="1" xsi:type="string">sales_email_creditmemo_guest_template</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Maisondunet\EmailAttachment\Model\AttachmentResolver\Shipment">
+        <arguments>
+            <argument name="templates" xsi:type="array">
+                <item name="0" xsi:type="string">sales_email_shipment_template</item>
+                <item name="1" xsi:type="string">sales_email_shipment_guest_template</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Maisondunet\EmailAttachment\Model\Config\Backend\FileManager">
+        <arguments>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="0" xsi:type="string">pdf</item>
+                <item name="1" xsi:type="string">jpg</item>
+                <item name="2" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,24 @@
+
+input.mdn_fileupload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+input.mdn_fileupload + label {
+    cursor: pointer;
+}
+
+input.mdn_fileupload:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+input.mdn_fileupload:valid + label::before {
+    content: "\2713";
+    color: green;
+    margin-right: 3px;
+}
