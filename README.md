@@ -3,7 +3,11 @@
 This module Open-source module allow the administrator to attach Invoice, Shipment, Credit Memo and Custom PDF Files to sales email notification.
 It has been design to be as simple, expendable and as unobtrusive as possible. 
 
-It doesn't contains any bloatware or advertisment.
+It doesn't contain any bloatware just the bare minimum.
+
+# Compatibility
+
+The module has been tested with Magento 2.4.5, it should work with any 2.4.* magento installation. 
 
 # Installation
 
