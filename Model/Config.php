@@ -10,6 +10,7 @@ namespace Maisondunet\EmailAttachment\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Serialize\SerializerInterface;
+use Psr\Log\LoggerInterface;
 
 class Config
 {
@@ -17,13 +18,16 @@ class Config
 
     private ScopeConfigInterface $scopeConfig;
     private SerializerInterface $serializer;
+    private LoggerInterface $logger;
 
     public function __construct(
         ScopeConfigInterface $scopeConfig,
-        SerializerInterface $serializer
+        SerializerInterface $serializer,
+        LoggerInterface $logger
     ) {
         $this->scopeConfig = $scopeConfig;
         $this->serializer = $serializer;
+        $this->logger = $logger;
     }
 
     /**
@@ -50,9 +54,21 @@ class Config
         return !!$this->getConfig('enabled');
     }
 
-    public function getAttachments()
+    /**
+     * Return list of attachment defined in system config
+     * @return array
+     */
+    public function getAttachments(): array
     {
-        return $this->serializer->unserialize($this->getConfig('static_attachments'));
+        try {
+            $attachements = $this->serializer->unserialize($this->getConfig('static_attachments'));
+            if (is_array($attachements)) {
+                return $attachements;
+            }
+        } catch (\InvalidArgumentException $e) {
+            $this->logger->debug("Cannot unserialize attachements", ["exception" => $e]);
+        }
+        return [];
     }
 
     /**
