@@ -1,6 +1,6 @@
 {
   "name": "maisondunet/module-email-attachment",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Add invoice / shipment / creditmemo and custom attachments files to magento sales emails",
   "type": "magento2-module",
   "require": {
@@ -16,7 +16,7 @@
       "registration.php"
     ],
     "psr-4": {
-      "Maisondunet\\MailAttachment\\": ""
+      "Maisondunet\\EmailAttachment\\": ""
     }
   }
 }
