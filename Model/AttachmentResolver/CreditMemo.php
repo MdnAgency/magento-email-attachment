@@ -48,7 +48,7 @@ class CreditMemo implements AttachmentResolverInterface
     public function getAttachments(Template $template): array
     {
         $attachements = [];
-        if ($this->config->isAttachInvoiceEnabled() && array_contains($this->templates, $template->getTemplateId())) {
+        if ($this->config->isAttachInvoiceEnabled() && in_array($template->getTemplateId(),$this->templates)) {
             $pdf = $this->getPdf($template);
             if ($pdf !== null) {
                 $attachements[] = $pdf;

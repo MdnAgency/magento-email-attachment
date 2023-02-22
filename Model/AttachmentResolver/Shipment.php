@@ -53,7 +53,7 @@ class Shipment implements AttachmentResolverInterface
     public function getAttachments(Template $template): array
     {
         $attachements = [];
-        if ($this->config->isAttachShipmentEnabled() && array_contains($this->templates, $template->getTemplateId())) {
+        if ($this->config->isAttachShipmentEnabled() && in_array($template->getTemplateId(), $this->templates)) {
             $pdf = $this->getPdf($template);
             if ($pdf !== null) {
                 $attachements[] = $pdf;

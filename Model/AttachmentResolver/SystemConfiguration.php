@@ -15,6 +15,8 @@ use Maisondunet\EmailAttachment\Api\AttachmentResolverInterface;
 use Maisondunet\EmailAttachment\Model\Config;
 use Maisondunet\EmailAttachment\Model\Config\Backend\FileManager;
 
+
+
 /**
  * Load Sales email attachment defined in System Configuration
  */
@@ -43,7 +45,7 @@ class SystemConfiguration implements AttachmentResolverInterface
     {
         $attachments = [];
         foreach ($this->config->getAttachments() as $attachment) {
-            if (array_contains($attachment["templates"], $template->getTemplateId())) {
+            if (in_array($template->getTemplateId(), $attachment["templates"])) {
                 $fileName = $attachment["file"];
                 $mimeType = $this->fileManager->getFileMime($fileName);
                 $content = $this->fileManager->getFileContent($fileName);
